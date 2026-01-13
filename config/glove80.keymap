@@ -15,9 +15,10 @@
 
 // layers
 #define DEFAULT 0
-#define ORIGINAL 1
-#define SYMBOL 2
-#define MAGIC 3
+#define STURDY 1
+#define ORIGINAL 2
+#define SYMBOL 3
+#define MAGIC 4
 
 
 // +------------------------+                                             +------------------------+
@@ -130,12 +131,23 @@
 
         default_layer {
             bindings = <
-            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                  &kp F6       &kp F7      &kp F8      &kp F9        &kp F10
-            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4       &kp N5                                                             &kp N6  &kp N7       &kp N8      &kp N9      &kp N0        &kp MINUS
-            &none          &kp Q      &kp W      &kp E       &kp R        &kp T                                                              &kp Y   &kp U        &kp I       &kp O       &kp P         &kp BSLH
-            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hl LSHIFT F &kp G                                                              &kp H   &hr RSHIFT J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
-            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V        &kp B   &mo SYMBOL  &none    &none    &none  &none    &mo SYMBOL   &kp N   &kp M        &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
-            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &kp BSPC    &kp TAB  &none    &none  &kp RET  &kp SPACE            &kp UP       &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
+            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                     &kp F6       &kp F7      &kp F8      &kp F9        &kp F10
+            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4       &kp N5                                                                &kp N6  &kp N7       &kp N8      &kp N9      &kp N0        &kp MINUS
+            &none          &kp Q      &kp W      &kp E       &kp R        &kp T                                                                 &kp Y   &kp U        &kp I       &kp O       &kp P         &kp BSLH
+            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hl LSHIFT F &kp G                                                                 &kp H   &hr RSHIFT J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
+            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V        &kp B   &mo SYMBOL  &none    &tog STURDY &none  &none    &mo SYMBOL   &kp N   &kp M        &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
+            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &kp BSPC    &kp TAB  &none       &none  &kp RET  &kp SPACE            &kp UP       &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
+            >;
+        };
+
+        sturdy_layer {
+            bindings = <
+            &trans &trans     &trans     &trans      &trans                                                                     &trans       &trans      &trans     &trans     &trans
+            &trans &trans     &trans     &trans      &trans       &trans                                               &trans   &trans       &trans      &trans     &trans     &trans
+            &trans &kp V      &kp M      &kp L       &kp C        &kp P                                                &kp X    &kp F        &kp O       &kp U      &kp J      &trans
+            &trans &hl LGUI S &hl LALT T &hl LCTRL R &hl LSHIFT D &kp Y                                                &kp SEMI &hr RSHIFT N &hr RCTRL A &hr RALT E &hr RGUI I &trans
+            &trans &kp Z      &kp K      &kp Q       &kp G        &kp W &trans &trans &trans      &trans &trans &trans &kp B    &kp H        &trans      &trans     &trans     &trans
+            &trans &trans     &trans     &trans      &trans             &trans &trans &trans      &trans &trans &trans          &trans       &trans      &trans     &trans     &trans
             >;
         };
 
