@@ -41,6 +41,15 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
+        st: shift_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
+
         // https://v0-3-branch.zmk.dev/docs/keymaps/behaviors/hold-tap?examples=home_row_mods#custom-hold-tap-examples
         hl: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
@@ -68,6 +77,44 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <
+                 0  1  2  3  4
+                10 11 12 13 14 15
+                22 23 24 25 26 27
+                34 35 36 37 38 39
+                46 47 48 49 50 51 52 53 54
+                64 65 66 67 68    69 70 71
+            >;
+            hold-trigger-on-release;
+        };
+
+        // FIXME: is there a better way to deduplicate with the hl, hr behaviors?
+        hll: home_row_mod_layer_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&mo>, <&kp>;
+            hold-trigger-key-positions = <
+                             5  6  7  8  9
+                         16 17 18 19 20 21
+                         28 29 30 31 32 33
+                         40 41 42 43 44 45
+                55 56 57 58 59 60 61 62 63
+                72 73 74    75 76 77 78 79
+            >;
+            hold-trigger-on-release;
+        };
+        hlr: home_row_mod_layer_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&mo>, <&kp>;
             hold-trigger-key-positions = <
                  0  1  2  3  4
                 10 11 12 13 14 15
@@ -131,23 +178,23 @@
 
         default_layer {
             bindings = <
-            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                     &kp F6       &kp F7      &kp F8      &kp F9        &kp F10
-            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4       &kp N5                                                                &kp N6  &kp N7       &kp N8      &kp N9      &kp N0        &kp MINUS
-            &none          &kp Q      &kp W      &kp E       &kp R        &kp T                                                                 &kp Y   &kp U        &kp I       &kp O       &kp P         &kp BSLH
-            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hl LSHIFT F &kp G                                                                 &kp H   &hr RSHIFT J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
-            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V        &kp B   &mo SYMBOL  &none    &tog STURDY &none  &none    &mo SYMBOL   &kp N   &kp M        &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
-            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &kp BSPC    &kp TAB  &none       &none  &kp RET  &kp SPACE            &kp UP       &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
+            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                            &kp F6        &kp F7      &kp F8      &kp F9        &kp F10
+            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4        &kp N5                                                                      &kp N6  &kp N7        &kp N8      &kp N9      &kp N0        &kp MINUS
+            &none          &kp Q      &kp W      &kp E       &kp R         &kp T                                                                       &kp Y   &kp U         &kp I       &kp O       &kp P         &kp BSLH
+            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hll SYMBOL F &kp G                                                                       &kp H   &hlr SYMBOL J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
+            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V         &kp B  &none          &none    &tog STURDY &none  &none    &none            &kp N   &kp M         &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
+            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &st LSHIFT TAB &kp BSPC &none       &none  &kp RET  &st RSHIFT SPACE &kp UP                &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
             >;
         };
 
         sturdy_layer {
             bindings = <
-            &trans &trans     &trans     &trans      &trans                                                                     &trans       &trans      &trans     &trans     &trans
-            &trans &trans     &trans     &trans      &trans       &trans                                               &trans   &trans       &trans      &trans     &trans     &trans
-            &trans &kp V      &kp M      &kp L       &kp C        &kp P                                                &kp X    &kp F        &kp O       &kp U      &kp J      &trans
-            &trans &hl LGUI S &hl LALT T &hl LCTRL R &hl LSHIFT D &kp Y                                                &kp SEMI &hr RSHIFT N &hr RCTRL A &hr RALT E &hr RGUI I &trans
-            &trans &kp Z      &kp K      &kp Q       &kp G        &kp W &trans &trans &trans      &trans &trans &trans &kp B    &kp H        &trans      &trans     &trans     &trans
-            &trans &trans     &trans     &trans      &trans             &trans &trans &trans      &trans &trans &trans          &trans       &trans      &trans     &trans     &trans
+            &trans &trans     &trans     &trans      &trans                                                                      &trans        &trans      &trans     &trans     &trans
+            &trans &trans     &trans     &trans      &trans        &trans                                               &trans   &trans        &trans      &trans     &trans     &trans
+            &trans &kp V      &kp M      &kp L       &kp C         &kp P                                                &kp X    &kp F         &kp O       &kp U      &kp J      &trans
+            &trans &hl LGUI S &hl LALT T &hl LCTRL R &hll SYMBOL D &kp Y                                                &kp SEMI &hlr SYMBOL N &hr RCTRL A &hr RALT E &hr RGUI I &trans
+            &trans &kp Z      &kp K      &kp Q       &kp G         &kp W &trans &trans &trans      &trans &trans &trans &kp B    &kp H         &trans      &trans     &trans     &trans
+            &trans &trans     &trans     &trans      &trans              &trans &trans &trans      &trans &trans &trans          &trans        &trans      &trans     &trans     &trans
             >;
         };
 
