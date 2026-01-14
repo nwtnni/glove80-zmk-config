@@ -41,13 +41,27 @@
             bindings = <&mo>, <&rgb_ug_status_macro>;
         };
 
-        st: shift_tap {
+        sb: space_backspace {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE>, <&kp BSPC>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        stl: shift_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+        };
+        str: shift_tap_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&sb>;
         };
 
         // https://v0-3-branch.zmk.dev/docs/keymaps/behaviors/hold-tap?examples=home_row_mods#custom-hold-tap-examples
@@ -178,12 +192,12 @@
 
         default_layer {
             bindings = <
-            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                            &kp F6        &kp F7      &kp F8      &kp F9        &kp F10
-            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4        &kp N5                                                                      &kp N6  &kp N7        &kp N8      &kp N9      &kp N0        &kp MINUS
-            &none          &kp Q      &kp W      &kp E       &kp R         &kp T                                                                       &kp Y   &kp U         &kp I       &kp O       &kp P         &kp BSLH
-            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hll SYMBOL F &kp G                                                                       &kp H   &hlr SYMBOL J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
-            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V         &kp B  &none          &none    &tog STURDY &none  &none    &none            &kp N   &kp M         &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
-            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &st LSHIFT TAB &kp BSPC &none       &none  &kp RET  &st RSHIFT SPACE &kp UP                &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
+            &kp F1         &kp F2     &kp F3     &kp F4      &kp F5                                                                                       &kp F6        &kp F7      &kp F8      &kp F9        &kp F10
+            &kp EQUAL      &kp N1     &kp N2     &kp N3      &kp N4        &kp N                                                                  &kp N6  &kp N7        &kp N8      &kp N9      &kp N0        &kp MINUS
+            &none          &kp Q      &kp W      &kp E       &kp R         &kp T                                                                  &kp Y   &kp U         &kp I       &kp O       &kp P         &kp BSLH
+            &kp ESC        &hl LGUI A &hl LALT S &hl LCTRL D &hll SYMBOL F &kp G                                                                  &kp H   &hlr SYMBOL J &hr RCTRL K &hr RALT L  &hr RGUI SEMI &kp SQT
+            &kp GRAVE      &kp Z      &kp X      &kp C       &kp V         &kp B  &none           &none &tog STURDY &none  &none    &none         &kp N   &kp M         &kp COMMA   &kp DOT     &kp FSLH      &kp PG_UP
+            &magic MAGIC 0 &kp HOME   &kp END    &kp LEFT    &kp RIGHT            &stl LSHIFT TAB &none &none       &none  &kp RET  &str RSHIFT 0 &kp UP                &kp DOWN    &kp LBKT    &kp RBKT      &kp PG_DN
             >;
         };
 
