@@ -61,7 +61,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SPACE>, <&kp BSPC>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <MOD_LSFT>;
         };
         stl: shift_tap_left {
             compatible = "zmk,behavior-hold-tap";
