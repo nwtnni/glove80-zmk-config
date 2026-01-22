@@ -70,6 +70,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <RHS>;
         };
         str: shift_tap_right {
             compatible = "zmk,behavior-hold-tap";
@@ -78,6 +79,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&sb>;
+            hold-trigger-key-positions = <LHS>;
         };
 
         // https://v0-3-branch.zmk.dev/docs/keymaps/behaviors/hold-tap?examples=home_row_mods#custom-hold-tap-examples
