@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# https://docs.moergo.com/glove80-user-guide/customizing-key-layout/#loading-new-zmk-firmware-onto-your-glove80
+#
+# 1. Power off halves
+# 2. Connect via USB
+# 3. Run this script
+# 4. Right half: hold PgDn + I, power on (bootloader mode)
+# 5. Left half: hold Magic + E, power on (bootloader mode)
 
 set -o pipefail
 set -o errexit
